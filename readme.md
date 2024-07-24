@@ -1,4 +1,4 @@
-# Zoom Phone API Data Fetcher
+# Fetching Data from Zoom
 
 This project fetches data from various Zoom Phone APIs and user-related endpoints, pushes the collected data to a specified endpoint, and handles Zoom webhooks for real-time event processing.
 
