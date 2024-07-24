@@ -1,4 +1,18 @@
-const { getDateRange, makeApiCall, pushDataToEndpoint } = require('./helpers');
+const express = require('express');
+
+const { getDateRange, makeApiCall, pushDataToEndpoint, fetchAllData } = require('./helpers');
+
+const webhookHandler = require('./webhookHandler');
+
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use('/webhook', webhookHandler);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 async function fetchAllData() {
   const dateRange = getDateRange();
