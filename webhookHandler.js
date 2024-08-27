@@ -16,19 +16,23 @@ function verifyWebhook(signature, timestamp, payload) {
 }
 
 router.post('/', express.raw({type: 'application/json'}), (req, res) => {
-  const signature = req.headers['x-zm-signature'];
-  const timestamp = req.headers['x-zm-request-timestamp'];
-  const payload = req.body;
+  try {
+    const signature = req.headers['x-zm-signature'];
+    const timestamp = req.headers['x-zm-request-timestamp'];
+    const payload = req.body;
 
-  if (verifyWebhook(signature, timestamp, payload)) {
-    console.log('Webhook verified and processed');
-    // Process the webhook payload here
-    // You can add your logic to handle different event types
-    res.status(200).send('Webhook received');
-  } else {
-    console.log('Webhook verification failed');
-    res.status(401).send('Webhook verification failed');
+    if (verifyWebhook(signature, timestamp, payload)) {
+      console.log('Webhook verified and processed');
+      // Process the webhook payload here
+      // You can add your logic to handle different event types
+      res.status(200).send('Webhook received');
+    } else {
+      console.log('Webhook verification failed');
+      res.status(401).send('Webhook verification failed');
+    }
+  } catch (error) {
+    console.error('Error processing webhook:', error);
+    res.status(500).send('Internal server error');
   }
 });
-
 module.exports = router;

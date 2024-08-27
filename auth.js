@@ -3,7 +3,7 @@ const config = {
     clientId: '',
     clientSecret: '',
     zoomApiBaseUrl: '',
-    endpointUrl: 'https://your-endpoint-url.com/api' // Add your endpoint URL here
+    endpointUrl: '' 
   };
   
   module.exports = config;
