@@ -1,6 +1,6 @@
 {
     "ai": {
           "contextPrompt": "dev-docs/conext-prompt-template.md",
-          "docSubFolder": "convertingToGraphQL"
+          "docSubFolder": "converting_To_GraphQL"
     }
 }
